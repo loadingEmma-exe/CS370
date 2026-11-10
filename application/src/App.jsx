@@ -6,13 +6,13 @@ function App() {
   const [selectedCards, setSelectedCards] = useState([]);
 
   const cards =[
-    { id: 1, title: "Card One", description: "First card description" },
-    { id: 2, title: "Card Two", description: "Second card description" },
-    { id: 3, title: "Card Three", description: "Third card description" },
+    { id: 1, title: "_id", description: "Tempt with Bunnies" },
+    { id: 2, title: "_id", description: "Endsong's Eviscerator" },
+    { id: 3, title: "-id", description:"Shattered Angel" },
   ]
 
   function handleGeminiButtonClick(){
-    submitToGemini(inputText);
+    submitToGemini(selectedCards, inputText);
   }
 
   function handleCheckboxChange(cardId) {
@@ -35,9 +35,10 @@ function App() {
         </div>
 
         <ul className="menu">
-          <li>Dashboard</li>
-          <li>Users</li>
-          <li>Reports</li>
+          <li>Browse</li>
+          <li>My Collection</li>
+          <li>Add to Collection</li>
+          <li>Edit Collection</li>
           <li>Settings</li>
         </ul>
       </aside>
@@ -45,11 +46,10 @@ function App() {
       <div className="main-content" id="right_section">
 
         <nav className="navbar" id="nav">
-          <h1 style={{color: '#374151'}}>Dashboard</h1>
+          <h1 style={{color: '#374151'}}>My Collection</h1>
 
           <div className="nav-links">
             <a href="#">Home</a>
-            <a href="#">Profile</a>
             <a href="#">Logout</a>
           </div>
         </nav>
@@ -57,13 +57,9 @@ function App() {
         <main className="content" id="content_area">
           <div className="card">
             <h2>Ask Gemini</h2>
-            <input type="text" placeholder="Enter Text" value={inputText} onChange={(e) => setInputText(e.target.value)}></input>
-            <button onClick={handleGeminiButtonClick}>
-              Go
-            </button>
+            <input type="text" placeholder="Type your text here!" value={inputText} onChange={(e) => setInputText(e.target.value)}></input>
+            <button onClick={handleGeminiButtonClick}>Go</button>
           </div>
-
-          <h2>Selected IDs: {selectedCards.join(", ")}</h2>
 
           <div className="card-container">
         {cards.map((card) => (
@@ -88,7 +84,7 @@ function App() {
   );
 }
 
-async function submitToGemini( background, userQuestion ) {
+async function submitToGemini( background, userQuestion) {
 
   let instructions = "You are a helpful assistant who is helping users decide on what game they should try next based on what they like. keep responses short with an answer and a justifiation, each being 1-2 sentences."
 
