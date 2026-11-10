@@ -1,8 +1,8 @@
-//import { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
-  
+  const [response, setresponse] = useState("Enter a question and I will respond!")
   return(
     <>
 
