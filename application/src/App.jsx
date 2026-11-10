@@ -6,11 +6,10 @@ function App() {
   return(
     <>
 
-    <div className="container">
-      {/* Left Sidebar */}
+    <div className="container" id="left_sidebar">
       <aside className="sidebar">
         <div className="logo">
-          <h2>My App</h2>
+          <h2>Game Center</h2>
         </div>
 
         <ul className="menu">
@@ -21,12 +20,10 @@ function App() {
         </ul>
       </aside>
 
-      {/* Right Section */}
-      <div className="main-content">
+      <div className="main-content" id="right_section">
 
-        {/* Navbar */}
-        <nav className="navbar">
-          <h1>Dashboard</h1>
+        <nav className="navbar" id="nav">
+          <h1 style={{color: '#374151'}}>Dashboard</h1>
 
           <div className="nav-links">
             <a href="#">Home</a>
@@ -35,8 +32,7 @@ function App() {
           </div>
         </nav>
 
-      {/* Content Area */}
-        <main className="content">
+        <main className="content" id="content_area">
           <div className="card">
             <h2>Welcome</h2>
             <p>
