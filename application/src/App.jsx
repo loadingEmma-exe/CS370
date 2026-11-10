@@ -34,20 +34,32 @@ function App() {
 
         <main className="content" id="content_area">
           <div className="card">
-            <h2>Welcome</h2>
-            <p>
-              This is the main content area.
-            </p>
+            <h2>Ask Gemini</h2>
+            <input type="text" placeholder="Enter Text" value={inputText} onChange={(e) => setInputText(e.target.value)}></input>
+            <button onClick={handleGeminiButtonClick}>
+              Go
+            </button>
           </div>
 
-          <div className="card">
-            <h2>Example Section</h2>
-            <p>
-              Add charts, tables, forms, or anything else here.
-            </p>
+          <h2>Selected IDs: {selectedCards.join(", ")}</h2>
+
+          <div className="card-container">
+        {cards.map((card) => (
+          <div className="select-card" key={card.id}>
+            <input
+              type="checkbox"
+              className="card-checkbox"
+              checked={selectedCards.includes(card.id)}
+              onChange={() => handleCheckboxChange(card.id)}
+            />
+
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
           </div>
+        ))}
+      </div>
+
         </main>
-
       </div>
     </div>
     </>
