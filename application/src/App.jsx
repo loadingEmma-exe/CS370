@@ -2,7 +2,8 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [response, setresponse] = useState("Enter a question and I will respond!")
+  const [response, setResponse] = useState("Enter a question and I will respond!")
+
   return(
     <>
 
@@ -36,9 +37,10 @@ function App() {
           <div className="card">
             <h2>Ask Gemini</h2>
             <input type="text" placeholder="Enter Text" value={inputText} onChange={(e) => setInputText(e.target.value)}></input>
-            <button onClick={handleGeminiButtonClick}>
+            <button onClick={submitToGemini(selectedCards, inputText, setResponse)}>
               Go
             </button>
+            <p>{response}</p>
           </div>
 
           <h2>Selected IDs: {selectedCards.join(", ")}</h2>
@@ -66,7 +68,7 @@ function App() {
   );
 }
 
-async function submitToGemini( background, userQuestion ) {
+async function submitToGemini( background, userQuestion, setResponse) {
 
   let instructions = "You are a helpful assistant who is helping users decide on what game they should try next based on what they like. keep responses short with an answer and a justifiation, each being 1-2 sentences."
 
@@ -119,9 +121,10 @@ async function submitToGemini( background, userQuestion ) {
           throw new Error(result.error?.message || "Gemini API request failed");
       }
 
-      return result.candidates[0].content.parts
-          .map(part => part.text || "")
-          .join("");
+      setResponse( result.candidates[0].content.parts
+        .map(part => part.text || "")
+        .join("")
+      )
 
   } catch (error) {
       console.error("Gemini Error:", error);
