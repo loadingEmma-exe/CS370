@@ -108,3 +108,38 @@ body,
   margin-bottom: 10px;
   color: #374151;
 }
+
+.card-container { /*Magic Cards For now*/
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.select-card {
+  position: relative;
+  width: 300px;
+
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-checkbox {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.select-card h3 {
+  margin-bottom: 10px;
+}
+
+.select-card p {
+  color: #555;
+}
